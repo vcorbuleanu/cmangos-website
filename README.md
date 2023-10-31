@@ -4,9 +4,11 @@ cmangos-website is licensed under a Creative Commons Attribution-NonCommercial-N
 
 You should have received a copy of the license along with this work. If not, see http://creativecommons.org/licenses/by-nc-nd/4.0/.
 
-PHP CONFIGURATION REQUIREMENTS:
+
+PHP CONFIGURATION:
 - short_open_tag = On
-PHP EXTENSIONS ENABLED:
+
+PHP EXTENSIONS:
  - curl
  - session
  - json
