@@ -1,0 +1,77 @@
+.section {
+    &.news {
+        background: url(/public/img/parchment/top-right.webp) top right no-repeat,
+                    url(/public/img/tabheader/on.webp) top left no-repeat,
+                    url(/public/img/parchment/bot-right.webp) bottom right no-repeat,
+                    url(/public/img/parchment/default.webp) !important;
+        
+        &.off {
+            background: url(/public/img/parchment/top-right.webp) top right no-repeat,
+                        url(/public/img/tabheader/off.webp) top left no-repeat,
+                        url(/public/img/parchment/default.webp) !important;
+            &>.content {
+                display: none;
+            }
+        }
+
+        &>.header {
+            cursor: pointer;
+            &>.title { 
+                flex: 1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-right: 10px;
+            }
+            &>.date {
+                margin-right: 10px;
+                margin-left: auto;
+            }
+        }
+
+        &>.content {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            padding: 0 !important;
+            margin: 30px 30px 30px 0;
+            &>.author {
+                display: flex;
+                flex-direction: column;
+                width: 148px;
+                align-items: center;
+                &>.avatar {
+                    position: relative;
+                    margin: 4px;
+                    width: 78px;
+                    height: 78px;
+                    border: none;
+                    background: var(--image) center center / 64px 64px no-repeat;
+                    &::before {
+                        position: absolute;
+                        display: inline-block;
+                        content: " ";
+                        width: 78px;
+                        height: 78px;
+                        background: var(--avatar-frame-admin) center center no-repeat;
+                    }
+                }
+                &>.nickname {
+                    width: 108px;
+                    text-align: center;
+                    margin-top: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    color: rgba(100, 9, 9, 1);
+                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+                    cursor: pointer;
+                    user-select: none;
+                }
+            }
+            &>.message {
+                flex: 1;
+            }
+        }
+    }
+}

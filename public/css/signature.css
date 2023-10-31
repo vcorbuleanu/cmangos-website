@@ -1,0 +1,65 @@
+.option {
+    display: inline-block;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &>input[type="radio"] {
+        display: none;
+    }
+
+    &>.signature {
+        position: relative;
+        margin: 4px;
+        width: 416px;
+        height: 78px;
+        border: none;
+        background: var(--image) center center / 402px 64px no-repeat;
+        filter: sepia(1);
+    }
+
+    & input[type="radio"]:checked + .signature {
+        filter: sepia(0);
+
+        &::before {
+            position: absolute;
+            display: inline-block;
+            content: " ";
+            width: 416px;
+            height: 78px;
+            background: var(--signature-frame) center center no-repeat;
+        }
+    }
+}
+
+.section {
+    &.signature {
+        & form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+
+            &>.signature-list {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &>input[type='submit'] {
+                margin-top: 30px;
+                cursor: pointer;
+                justify-self: center;
+                align-self: center;
+                font-size: 15px;
+                width: 180px;
+                height: 51px;
+                border: none;
+                color: rgba(244, 196, 0, 1);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+                background: url(/public/img/button.webp) no-repeat;
+            }
+        }
+    }
+}

@@ -1,0 +1,276 @@
+.section {
+    &>.content {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 75px;
+
+        &>.message {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        &>.table {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+            line-height: 15px;
+            padding: 12px;
+            
+            background: url(/public/img/frame/top-left.webp) top left no-repeat,
+                        url(/public/img/frame/top-right.webp) top right no-repeat,
+                        url(/public/img/frame/bot-left.webp) bottom left no-repeat,
+                        url(/public/img/frame/bot-right.webp) bottom right no-repeat,
+                        url(/public/img/frame/top.webp) top left repeat-x,
+                        url(/public/img/frame/bot.webp) bottom left repeat-x,
+                        url(/public/img/frame/left.webp) top left repeat-y,
+                        url(/public/img/frame/right.webp) top right repeat-y,
+                        rgba(36, 35, 33, 1);
+
+            &.status {
+                &>.header, &>.row {
+                    &>div {
+                        &.name {
+                            flex: 0.375;
+                        }
+
+                        &.type {
+                            flex: 0.125;
+                        }
+                        
+                        &.population, &.status {
+                            flex: 0.15;
+                        }
+                        
+                        &.uptime {
+                            flex: 0.2;
+                        }
+                    }
+                    
+                    &>.online::before, &>.offline::before {
+                        display: inline-block;
+                        content: " ";
+                        height: 18px;
+                        width: 18px;
+                        margin-right: 5px;
+                    }
+                    &>.online::before {
+                        background: url(/public/img/status/online.webp) center center / 95% no-repeat;
+                    }
+
+                    &>.offline::before {
+                        margin-top: -2px;
+                        background: url(/public/img/status/offline.webp) center center / 95% no-repeat;
+                    }
+                }
+            }
+
+            &.history {
+                &>.header, &>.row {
+                    &>div {
+                        &.name {
+                            flex: 0.375;
+                        }
+
+                        &.type {
+                            flex: 0.125;
+                        }
+
+                        &.players {
+                            flex: 0.1;
+                        }
+
+                        &.started, &.uptime {
+                            flex: 0.2;
+                        }
+                    }
+                }
+            }
+
+            &.players {
+                &>.header, &>.row {
+                    &>div {
+                        &.id {
+                            flex: 0.075;
+                        }
+                        
+                        &.name {
+                            flex: 0.275;
+                        }
+
+                        &.level, &.faction, &.race, &.class {
+                            flex: 0.1;
+                        }
+
+                        &.playtime {
+                            flex: 0.25;
+                        }
+
+                        &>img {
+                            box-sizing: border-box;
+                            border: 1px solid rgba(0, 0, 0, 1);
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+
+            &>.header, &>.row {
+                display: flex;
+                height: 26px;
+                flex-direction: row;
+                
+                &.error {
+                    border-color:#D8BF95 #D8BF95 transparent transparent;
+                    background-color:#e2cba1;
+
+                    &>div {
+                        color:rgba(36, 35, 33, 1);
+                    }
+                }
+
+                &>div {
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: rgba(221, 221, 221, 1);
+                    border: 1px solid rgba(0, 0, 0, 0);
+                }
+            }
+
+            &>.header {
+                &>div {
+                    border-color:#5D5D5D #5D5D5D #1E1D1C #1E1D1C;
+                    background: #2E2D2B;
+                }
+            }
+
+            &>.row:nth-of-type(2n + 1) {
+                &.classic>div {
+                    color:rgba(36, 35, 33, 1);
+                    border-color:#D8BF95 #D8BF95 transparent transparent;
+                    background-color:#c3ad89;
+                }
+                &.tbc>div {
+                    color:rgba(36, 35, 33, 1);
+                    border-color:#B6C89E #B6C89E transparent transparent;
+                    background-color:#A5B590;
+                }
+                &.wotlk>div {
+                    color:rgba(36, 35, 33, 1);
+                    border-color:#B6C2D7 #B6C2D7 transparent transparent;
+                    background-color:#A5B0C2;
+                }
+            }
+
+            &>.row:nth-of-type(2n) {
+                &.classic>div {
+                    color:rgba(36, 35, 33, 1);
+                    border-color:#D8BF95 #D8BF95 transparent transparent;
+                    background-color:#e2cba1;
+                }
+                &.tbc>div {
+                    color:rgba(36, 35, 33, 1);
+                    border-color:#B6C89E #B6C89E transparent transparent;
+                    background-color:#C1D4AA;
+                }
+                &.wotlk>div {
+                    color:rgba(36, 35, 33, 1);
+                    border-color:#B6C2D7 #B6C2D7 transparent transparent;
+                    background-color:#C2CEE3;
+                }
+            }
+        }
+
+        .graph {
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            &.races {
+                padding: 0 20px;
+                border-bottom: 1px solid rgba(0, 0, 0, 1);
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+            }
+
+            &.classes {
+                padding: 0 160px;
+                margin-bottom: 10px;
+            }
+            
+            &>.data {
+                height: 150px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 10px;
+
+                &>.bar {
+                    display: flex;
+                    height: 150px;
+                    width: 14px;
+                    margin: auto;
+                    margin-bottom: 0;
+                    justify-content: center;
+                    align-items: flex-end;
+                    background: rgba(0, 0, 0, 0.6);
+                    cursor: pointer;
+                    box-sizing: border-box;
+                    border: 1px solid rgba(0, 0, 0, 1);
+                    border-radius: 7px;
+                    overflow: hidden;
+
+                    &>.fill {
+                        z-index: 1 !important;
+                        background: rgba(244, 196, 0, 1);
+                        width: 18px;
+
+                        &:hover {
+                            filter: brightness(1.25);
+                        }
+                    }
+                }
+
+                &.tbc {
+                    &>.bar>.fill {
+                        background: rgb(139, 194, 67);
+                    }
+                }
+
+                &.wotlk {
+                    &>.bar>.fill {
+                        background: rgb(67, 158, 194);
+                    }
+                }
+            }
+            &>.legend {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+    
+                &>.race, &>.class {
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+
+                    &>img {
+                        box-sizing: border-box;
+                        border: 1px solid rgba(0, 0, 0, 1);
+                        width: 26px;
+                        height: 26px;
+
+                        &:hover {
+                            filter: brightness(1.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
