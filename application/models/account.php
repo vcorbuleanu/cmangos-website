@@ -29,7 +29,7 @@
 			$statement->execute(array('username' => $username));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 			if (!$result)
-				return null;
+				return array();
 			return $result;
 		}
 
@@ -38,7 +38,7 @@
 			$statement->execute(array('username' => $username, 'time' => date("Y-m-d H:i:s", time()-60*60*24*$days)));
 			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 			if (!$result)
-				return null;
+				return array();
 			return $result;
 		}
 		
