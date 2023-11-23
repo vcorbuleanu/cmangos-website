@@ -1,0 +1,449 @@
+@charset "utf-8";
+
+::-webkit-scrollbar { display: none; }
+
+html, body {
+    color: rgba(238, 238, 238, 1);
+    font-family: 'Verdana';
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    zoom: 1;
+}
+
+[data-tooltip] {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.tooltip {
+    z-index: 1;
+    display: block;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 4px 6px;
+    border-radius: 2px;
+    font-size: 13px;
+    white-space: nowrap;
+    box-shadow: 0 0 1px rgba(238, 238, 238, 1);
+}
+
+body {
+    background: rgba(0, 0, 0, 1) var(--iron-background) repeat-x;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: max(100vh, 750px);
+
+    --avatar-frame: url(/public/img/avatar/frame-user.webp);
+    --avatar-frame-admin: url(/public/img/avatar/frame-admin.webp);
+    --signature-frame: url(/public/img/signature/frame.webp);
+
+    &.alliance {
+        --iron-top: url(/public/img/themes/top/classic.webp);
+        --iron-statue: url(/public/img/themes/statue/alliance.webp);
+        --iron-background: url(/public/img/themes/background/alliance.webp);
+        --menu-button-on: url(/public/img/themes/button/alliance/on.webp);
+        --menu-button-off: url(/public/img/themes/button/alliance/off.webp);
+        --menu-button-minus: url(/public/img/themes/button/alliance/minus.webp);
+        --menu-button-plus: url(/public/img/themes/button/alliance/plus.webp);
+        --menu-hover: rgba(11, 34, 55, 1);
+        --menu-text-color: rgba(244, 196, 0, 1);
+        --menu-text-color-hover: rgba(238, 238, 238, 1);
+        --header-left: url(/public/img/themes/header/alliance/left.webp);
+        --header-right: url(/public/img/themes/header/alliance/right.webp);
+        --header-background: url(/public/img/themes/header/alliance/background.webp);
+        --subheader-left: url(/public/img/themes/subheader/alliance/left.webp);
+        --subheader-right: url(/public/img/themes/subheader/alliance/right.webp);
+        --subheader-background: url(/public/img/themes/subheader/alliance/background.webp);
+        --logo: url(/public/img/themes/logo/alliance.webp);
+        --character: url(/public/img/themes/character/alliance.webp);
+        --button: url(/public/img/button/alliance.webp);
+    }
+
+    &.horde {
+        --iron-top: url(/public/img/themes/top/classic.webp);
+        --iron-statue: url(/public/img/themes/statue/horde.webp);
+        --iron-background: url(/public/img/themes/background/horde.webp);
+        --menu-button-on: url(/public/img/themes/button/horde/on.webp);
+        --menu-button-off: url(/public/img/themes/button/horde/off.webp);
+        --menu-button-minus: url(/public/img/themes/button/horde/minus.webp);
+        --menu-button-plus: url(/public/img/themes/button/horde/plus.webp);
+        --menu-hover: rgba(55, 16, 11, 1);
+        --menu-text-color: rgba(244, 196, 0, 1);
+        --menu-text-color-hover: rgba(238, 238, 238, 1);
+        --header-left: url(/public/img/themes/header/horde/left.webp);
+        --header-right: url(/public/img/themes/header/horde/right.webp);
+        --header-background: url(/public/img/themes/header/horde/background.webp);
+        --subheader-left: url(/public/img/themes/subheader/horde/left.webp);
+        --subheader-right: url(/public/img/themes/subheader/horde/right.webp);
+        --subheader-background: url(/public/img/themes/subheader/horde/background.webp);
+        --logo: url(/public/img/themes/logo/horde.webp);
+        --character: url(/public/img/themes/character/horde.webp);
+        --button: url(/public/img/button/horde.webp);
+    }
+
+    &.undead {
+        --iron-top: url(/public/img/themes/top/classic.webp);
+        --iron-statue: url(/public/img/themes/statue/undead.webp);
+        --iron-background: url(/public/img/themes/background/undead.webp);
+        --menu-button-on: url(/public/img/themes/button/undead/on.webp);
+        --menu-button-off: url(/public/img/themes/button/undead/off.webp);
+        --menu-button-minus: url(/public/img/themes/button/undead/minus.webp);
+        --menu-button-plus: url(/public/img/themes/button/undead/plus.webp);
+        --menu-hover: rgba(11, 55, 54, 1);
+        --menu-text-color: rgba(244, 196, 0, 1);
+        --menu-text-color-hover: rgba(238, 238, 238, 1);
+        --header-left: url(/public/img/themes/header/undead/left.webp);
+        --header-right: url(/public/img/themes/header/undead/right.webp);
+        --header-background: url(/public/img/themes/header/undead/background.webp);
+        --subheader-left: url(/public/img/themes/subheader/undead/left.webp);
+        --subheader-right: url(/public/img/themes/subheader/undead/right.webp);
+        --subheader-background: url(/public/img/themes/subheader/undead/background.webp);
+        --logo: url(/public/img/themes/logo/undead.webp);
+        --character: url(/public/img/themes/character/undead.webp);
+        --button: url(/public/img/button/undead.webp);
+    }
+
+    &.bloodelf {
+        --iron-top: url(/public/img/themes/top/tbc.webp);
+        --iron-statue: url(/public/img/themes/statue/bloodelf.webp);
+        --iron-background: url(/public/img/themes/background/bloodelf.webp);
+        --menu-button-on: url(/public/img/themes/button/bloodelf/on.webp);
+        --menu-button-off: url(/public/img/themes/button/bloodelf/off.webp);
+        --menu-button-minus: url(/public/img/themes/button/bloodelf/minus.webp);
+        --menu-button-plus: url(/public/img/themes/button/bloodelf/plus.webp);
+        --menu-hover: rgba(55, 11, 55, 1);
+        --menu-text-color: rgba(244, 196, 0, 1);
+        --menu-text-color-hover: rgba(238, 238, 238, 1);
+        --header-left: url(/public/img/themes/header/bloodelf/left.webp);
+        --header-right: url(/public/img/themes/header/bloodelf/right.webp);
+        --header-background: url(/public/img/themes/header/bloodelf/background.webp);
+        --subheader-left: url(/public/img/themes/subheader/bloodelf/left.webp);
+        --subheader-right: url(/public/img/themes/subheader/bloodelf/right.webp);
+        --subheader-background: url(/public/img/themes/subheader/bloodelf/background.webp);
+        --logo: url(/public/img/themes/logo/bloodelf.webp);
+        --character: url(/public/img/themes/character/bloodelf.webp);
+        --button: url(/public/img/button/bloodelf.webp);
+    }
+
+    &.tbc {
+        --iron-top: url(/public/img/themes/top/tbc.webp);
+        --iron-statue: url(/public/img/themes/statue/tbc.webp);
+        --iron-background: url(/public/img/themes/background/tbc.webp);
+        --menu-button-on: url(/public/img/themes/button/tbc/on.webp);
+        --menu-button-off: url(/public/img/themes/button/tbc/off.webp);
+        --menu-button-minus: url(/public/img/themes/button/tbc/minus.webp);
+        --menu-button-plus: url(/public/img/themes/button/tbc/plus.webp);
+        --menu-hover: rgba(11, 55, 24, 1);
+        --menu-text-color: rgba(244, 196, 0, 1);
+        --menu-text-color-hover: rgba(238, 238, 238, 1);
+        --header-left: url(/public/img/themes/header/tbc/left.webp);
+        --header-right: url(/public/img/themes/header/tbc/right.webp);
+        --header-background: url(/public/img/themes/header/tbc/background.webp);
+        --subheader-left: url(/public/img/themes/subheader/tbc/left.webp);
+        --subheader-right: url(/public/img/themes/subheader/tbc/right.webp);
+        --subheader-background: url(/public/img/themes/subheader/tbc/background.webp);
+        --logo: url(/public/img/themes/logo/tbc.webp);
+        --character: url(/public/img/themes/character/tbc.webp);
+        --button: url(/public/img/button/tbc.webp);
+    }
+
+    &.wotlk {
+        --iron-top: url(/public/img/themes/top/wotlk.webp);
+        --iron-statue: url(/public/img/themes/statue/wotlk.webp);
+        --iron-background: url(/public/img/themes/background/wotlk.webp);
+        --menu-button-on: url(/public/img/themes/button/wotlk/on.webp);
+        --menu-button-off: url(/public/img/themes/button/wotlk/off.webp);
+        --menu-button-minus: url(/public/img/themes/button/wotlk/minus.webp);
+        --menu-button-plus: url(/public/img/themes/button/wotlk/plus.webp);
+        --menu-hover: rgba(11, 43, 55, 1);
+        --menu-text-color: rgba(244, 196, 0, 1);
+        --menu-text-color-hover: rgba(238, 238, 238, 1);
+        --header-left: url(/public/img/themes/header/wotlk/left.webp);
+        --header-right: url(/public/img/themes/header/wotlk/right.webp);
+        --header-background: url(/public/img/themes/header/wotlk/background.webp);
+        --subheader-left: url(/public/img/themes/subheader/wotlk/left.webp);
+        --subheader-right: url(/public/img/themes/subheader/wotlk/right.webp);
+        --subheader-background: url(/public/img/themes/subheader/wotlk/background.webp);
+        --logo: url(/public/img/themes/logo/wotlk.webp);
+        --character: url(/public/img/themes/character/wotlk.webp);
+        --button: url(/public/img/button/wotlk.webp);
+    }
+
+    &>.header {
+        display: block;
+        background: var(--iron-top) repeat-x;
+        height: 73px;
+        z-index: 0;
+    }
+    
+    &>.footer {
+        background: url(/public/img/themes/bottom.webp) repeat-x;
+        height: 16px;
+    }
+    
+    &>.body {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: -25px;
+        margin-bottom: -1px;
+
+        &>.menu {
+            margin-bottom: 280px;
+            padding-top: 45px;
+            user-select: none;
+            min-width: 130px;
+            position: relative;
+            z-index: 1;
+
+            &::before {
+                content: '';
+                background: var(--character) right top / 80% no-repeat;
+                height: 720px;
+                left: -250px;
+                position: absolute;
+                top: -47px;
+                width: 380px;
+                z-index: 0;
+            }
+
+            &::after {
+                content: '';
+                background: var(--logo) center top / 78% no-repeat;
+                height: 120px;
+                left: -63px;
+                position: absolute;
+                top: -47px;
+                width: 262px;
+                z-index: 1;
+                pointer-events: none;
+            }
+    
+            &>.button {
+                position: relative;
+    
+                &>.icon {
+                    height: 19px;
+                    left: 4px;
+                    pointer-events: none;
+                    position: absolute;
+                    top: 4px;
+                    width: 19px;
+                }
+                
+                &>.news { background: url(/public/img/themes/button/news-on.webp); }
+                &>.account { background: url(/public/img/themes/button/account-on.webp); }
+                &>.guide { background: url(/public/img/themes/button/guide-on.webp); }
+                &>.story { background: url(/public/img/themes/button/story-on.webp); }
+                &>.community { background: url(/public/img/themes/button/community-on.webp); }
+                &>.realms { background: url(/public/img/themes/button/realms-on.webp); }
+                &>.status {
+                    background: var(--menu-button-minus);
+                    height: 7px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 5px;
+                    top: 10px;
+                    width: 7px;
+                }
+    
+                &.off {
+                    &>.news { background: url(/public/img/themes/button/news-off.webp); }
+                    &>.account { background: url(/public/img/themes/button/account-off.webp); }
+                    &>.guide { background: url(/public/img/themes/button/guide-off.webp); }
+                    &>.story { background: url(/public/img/themes/button/story-off.webp); }
+                    &>.community { background: url(/public/img/themes/button/community-off.webp); }
+                    &>.realms { background: url(/public/img/themes/button/realms-off.webp); }
+                    &>.status { background: var(--menu-button-plus); }
+                    &>.sub-menu { display: none; }
+                }
+                
+                &>.text {
+                    background: var(--menu-button-off);
+                    box-sizing: border-box;
+                    color: var(--menu-text-color);
+                    cursor: pointer;
+                    font-size: 13px;
+                    height: 27px;
+                    line-height: 27px;
+                    padding-left: 27px;
+                    position: relative;
+                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+                    text-transform: uppercase;
+    
+                    &:hover {
+                        background: var(--menu-button-on);
+                        color: var(--menu-text-color-hover);
+                    }
+                }
+    
+                &>.sub-menu {
+                    background: rgba(25, 25, 25, 0.75);
+                    border-bottom: 1px solid rgba(85, 85, 85, 1);
+                    border-bottom-left-radius: 3px;
+                    border-left: 1px solid rgba(85, 85, 85, 1);
+                    margin-bottom: -2px;
+                    margin-left: 4px;
+                    
+                    &>.item {
+                        border-bottom: 1px solid rgba(244, 196, 0, 0.2);
+                        color: var(--menu-text-color);
+                        cursor: pointer;
+                        display: block;
+                        font-size: 12px;
+                        line-height: 18px;
+                        padding-left: 5px;
+                        text-decoration: none;
+                        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    
+                        &::before {
+                            content: "•";
+                            margin-right: 5px;
+                            opacity: 0.75;
+                        }
+    
+                        &:hover {
+                            background: var(--menu-hover);
+                            color: var(--menu-text-color-hover);
+                        }
+    
+                        &:last-of-type { border: none; }
+                    }
+                }
+            }
+        }
+
+        &>.page {
+            background: url(/public/img/border/top-left.webp) top left no-repeat,
+                        url(/public/img/border/top-right.webp) top right no-repeat,
+                        url(/public/img/border/bot-left.webp) bottom left no-repeat,
+                        url(/public/img/border/bot-right.webp) bottom right no-repeat,
+                        url(/public/img/border/top.webp) top left repeat-x,
+                        url(/public/img/border/bot.webp) bottom left repeat-x,
+                        url(/public/img/border/left.webp) top left repeat-y,
+                        url(/public/img/border/right.webp) top right repeat-y,
+                        url(/public/img/parchment/dark.webp);
+            display: flex;
+            flex-direction: column;
+            width: 760px;
+            box-sizing: border-box;
+            padding: 30px 30px 73px 30px;
+            position: relative;
+
+            &::before {
+                bottom: 1px;
+                content: '';
+                height: 298px;
+                left: -115px;
+                position: absolute;
+                width: 115px;
+                background: var(--iron-statue) no-repeat;
+                z-index: -1;
+            }
+    
+            &>.disclaimer {
+                background: url(/public/img/disclaimer.webp) top left / 100% no-repeat;
+                bottom: 8px;
+                box-sizing: border-box;
+                font-size: 8px;
+                height: 60px;
+                left: 50%;
+                position: absolute;
+                text-align: center;
+                transform: translateX(-50%);
+                width: 440px;
+                padding: 12px;
+            }
+    
+            &>.title {
+                background: var(--header-left) left no-repeat,
+                            var(--header-right) right no-repeat,
+                            var(--header-background) repeat-x;
+                cursor: pointer;
+                width: 700px;
+                box-sizing: border-box;
+                height: 35px;
+                font-size: 13px;
+                line-height: 35px;
+                padding-left: 30px;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+                user-select: none;
+            }
+
+            &>.banner {
+                position: relative;
+                height: 150px;
+                margin-top: 5px;
+                background: rbga(0, 0, 0, 1);
+
+                &::before {
+                    content: " ";
+                    display: block;
+                    width: 800px;
+                    height: 250px;
+                    position: absolute;
+                    top: -50px;
+                    left: -50px;
+                    pointer-events: none;
+                    background: var(--banner) center center / 100% no-repeat;
+                }
+            }
+
+            &>.section {
+                background: url(/public/img/parchment/top-right.webp) top right no-repeat,
+                            url(/public/img/tabheader/off.webp) top left no-repeat,
+                            url(/public/img/parchment/bot-right.webp) bottom right no-repeat,
+                            url(/public/img/parchment/default.webp);
+                border: 1px solid rgba(51, 51, 51, 1);
+                color: rgba(51, 51, 51, 1);
+                display: flex;
+                flex-direction: column;
+                font-size: 13px;
+                line-height: 16px;
+                margin-top: 5px;
+                box-sizing: border-box;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+
+                &>.header {
+                    align-items: center;
+                    color: rgba(100, 9, 9, 1);
+                    background: transparent;
+                    display: flex;
+                    font-size: 13px;
+                    height: 28px;
+                    padding-left: 28px;
+                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+                    user-select: none;
+                }
+                
+                &>.content {
+                    box-sizing: border-box;
+                    min-height: 106px;
+                    padding: 15px;
+
+                    &>.subheader {
+                        background: var(--subheader-left) left no-repeat,
+                                    var(--subheader-right) right no-repeat,
+                                    var(--subheader-background) repeat-x;
+                        display: flex;
+                        height: 24px;
+                        align-items: center;
+                        margin: 10px 0;
+                        padding-left: 26px;
+                        color: rgba(238, 238, 238, 1);
+                        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+                    }
+                }
+            }
+        }
+    }
+}

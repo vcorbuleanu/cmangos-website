@@ -1,0 +1,19 @@
+@media only screen and (orientation: landscape) {
+    html {
+        zoom: 0.8;
+    }
+
+    body {
+        min-height: max(calc(100svh * 1/0.8), 700px);
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    html {
+        zoom: 0.4;
+    }
+
+    body {
+        min-height: max(calc(100svh * 1/0.4), 700px);
+    }
+}

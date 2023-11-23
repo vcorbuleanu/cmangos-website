@@ -1,0 +1,492 @@
+.section {
+    &.create, &.login, &.recover, &.reset, &.nickname, &.password, &.mfa, &.email {
+        &>form {
+            display: flex;
+            flex-direction: column;
+            margin: 30px 0;
+        }
+
+        & .input {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+
+            &.error {
+                & label {
+                    color: rgba(238, 0, 0, 1);
+                }
+
+                &>.warning {
+                    display: flex;
+                    color: rgba(238, 0, 0, 1);
+                }
+
+                &>.info {
+                    display: none;
+                }
+            }
+            &>.element, &>.button {
+                flex: 0.5;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                &.horizontal {
+                    flex-direction: row;
+                    justify-content: center;
+                }
+            
+                &>label {
+                    font-size: 13px;
+                    margin-top: 8px;
+                    cursor: pointer;
+                }
+
+                &>input[type='text'], &>input[type='password'] {
+                    background: url(/public/img/frame/top-left.webp) top left no-repeat,
+                                url(/public/img/frame/top-right.webp) top right no-repeat,
+                                url(/public/img/frame/bot-left.webp) bottom left no-repeat,
+                                url(/public/img/frame/bot-right.webp) bottom right no-repeat,
+                                url(/public/img/frame/top.webp) top left repeat-x,
+                                url(/public/img/frame/bot.webp) bottom left repeat-x,
+                                url(/public/img/frame/left.webp) top left repeat-y,
+                                url(/public/img/frame/right.webp) top right repeat-y,
+                                rgba(36, 35, 33, 1);
+                    border: none;
+                    border-radius: 3px;
+                    color: rgba(221, 221, 221, 1);
+                    font-size: 13px;
+                    outline: none;
+                    width: 250px;
+                    height: 45px;
+                    box-sizing: border-box;
+                    text-align: center;
+                    padding: 9px 15px;
+                }
+
+                &>input[type='password'] {
+                    font-size: 20px;
+                }
+
+                &>input[type='submit'] {
+                    cursor: pointer;
+                    justify-self: center;
+                    align-self: center;
+                    font-size: 15px;
+                    width: 180px;
+                    height: 51px;
+                    border: none;
+                    color: rgba(244, 196, 0, 1);
+                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+                    background: url(/public/img/button.webp) no-repeat;
+                }
+            }
+
+            &:has(.button) {
+                margin-top: 23px;
+            }
+
+            &>.warning, &>.info {
+                flex: 0.5;
+                margin-top: 23px;
+                display: flex;
+                align-items: center;
+                font-size: 13px;
+                line-height: 16px;
+
+                &::before {
+                    display: inline-block;
+                    content: " ";
+                    margin-right: 5px;
+                    width: 19px;
+                    height: 24px;
+                    background: url(/public/img/alert.webp) center center / 100% no-repeat;
+                }
+            }
+
+            &>.warning {
+                display: none;
+            }
+        }
+    }
+
+    &.mfa {
+        & .qrcode {
+            margin: 10px 0 30px;
+
+            &>.element {
+                &>#qrcode {
+                    display: flex;
+                    flex: 0.5;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                &>.secret {
+                    margin-bottom: 10px;
+                }
+            }
+
+            &>.info {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    &.fail, &.success, &.recover, &.reset, &.password, &.email {
+        &>.content {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 25px;
+            min-height: 310px !important;
+
+            &>.info {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                font-style: italic;
+                font-size: 13px;
+                line-height: 16px;
+                margin: 20px;
+
+                &>p {
+                    margin: 10px;
+                }
+            }
+
+            &>.orc {
+                margin-top: 20px;
+                margin-right: 35px;
+                width: 153px;
+                height: 200px;
+                background: url(/public/img/orc.webp) center center no-repeat;
+            }
+        }
+    }
+
+    &.recover, &.reset {
+        &>.content {
+            margin-bottom: 80px;
+        }
+    }
+
+    &.manage {
+        &>.content {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 75px;
+
+            &>.media{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 50px;
+
+                &>.avatar, &>.signature {
+                    margin: auto;
+                    position: relative;
+                    border: none;
+
+                    &::before {
+                        position: absolute;
+                        display: inline-block;
+                        content: " ";
+                    }
+                }
+                &>.avatar {
+                    margin: 4px;
+                    width: 78px;
+                    height: 78px;
+                    background: var(--image) center center / 64px 64px no-repeat;
+                    cursor: pointer;
+
+                    &::before {
+                        position: absolute;
+                        display: inline-block;
+                        content: " ";
+                        width: 78px;
+                        height: 78px;
+                        background: var(--avatar-frame) center center no-repeat;
+                    }
+
+                    &.admin::before {
+                        background: var(--avatar-frame-admin) center center no-repeat;
+                    }
+                }
+                &>.signature {
+                    position: relative;
+                    margin: 4px;
+                    width: 416px;
+                    height: 78px;
+                    background: var(--image) center center / 402px 64px no-repeat;
+
+                    &::before {
+                        width: 416px;
+                        height: 78px;
+                        background: var(--signature-frame) center center no-repeat;
+                    }
+                }
+            }
+            &>.account {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                margin: 10px 55px;
+
+                &>.tags {
+                    display: flex;
+                    flex-direction: column;
+                    width: 78px;
+                    align-items: flex-end;
+                    margin-right: 57px;
+
+                    &>div {
+                        padding: 10px 0 9px 0;
+                        text-transform: uppercase;
+                    }
+                }
+                &>.data {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                    padding-left: 5px;
+
+                    &>div {
+                        width: 265px;
+                        padding: 10px 10px 9px 0;
+                        box-sizing: border-box;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+                &>.actions {
+                    display: flex;
+                    flex-direction: column;
+                    padding-right: 3px;
+
+                    &>a {
+                        display: flex;
+                        cursor: pointer;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 13px;
+                        width: 150px;
+                        height: 27px;
+                        margin: 4px 0;
+                        border: none;
+                        color: rgba(244, 196, 0, 1);
+                        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+                        text-decoration: none;
+                        background: var(--button) left no-repeat;
+
+                        &:hover {
+                            color: rgba(211, 211, 211, 1);
+                            filter: brightness(1.25);
+                        }
+                    }
+                }
+            }
+            &>.table {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                font-size: 13px;
+                line-height: 15px;
+                padding: 12px;
+                background: url(/public/img/frame/top-left.webp) top left no-repeat,
+                            url(/public/img/frame/top-right.webp) top right no-repeat,
+                            url(/public/img/frame/bot-left.webp) bottom left no-repeat,
+                            url(/public/img/frame/bot-right.webp) bottom right no-repeat,
+                            url(/public/img/frame/top.webp) top left repeat-x,
+                            url(/public/img/frame/bot.webp) bottom left repeat-x,
+                            url(/public/img/frame/left.webp) top left repeat-y,
+                            url(/public/img/frame/right.webp) top right repeat-y,
+                            rgba(36, 35, 33, 1);
+
+                &.characters {
+                    &>.header, &>.row {
+                        display: flex;
+                        height: 26px;
+                        flex-direction: row;
+
+                        &>div {
+                            flex: 1;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: rgba(221, 221, 221, 1);
+                            border: 1px solid rgba(0, 0, 0, 0);
+
+                            &.id {
+                                flex: 0.05;
+                            }
+
+                            &.name {
+                                flex: 0.225;
+                            }
+
+                            &.level {
+                                flex: 0.075;
+                            }
+
+                            &.faction {
+                                flex: 0.1;
+                            }
+
+                            &.race {
+                                flex: 0.075;
+                            }
+
+                            &.class {
+                                flex: 0.075;
+                            }
+
+                            &.money {
+                                flex: 0.2;
+
+                                &>img {
+                                    box-sizing: border-box;
+                                    border: none !important;
+                                    width: 14px;
+                                    height: 14px;
+
+                                    &:not(:first-of-type) {
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
+
+                            &.playtime {
+                                flex: 0.2;
+                            }
+
+                            &>img {
+                                box-sizing: border-box;
+                                border: 1px solid rgba(0, 0, 0, 1);
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                    &>.header {
+                        &>div {
+                            border-color:#5D5D5D #5D5D5D #1E1D1C #1E1D1C;
+                            background: #2E2D2B;
+                        }
+                    }
+                    &>.row:nth-of-type(2n + 1) {
+                        &.classic>div {
+                            color:rgba(36, 35, 33, 1);
+                            border-color:#D8BF95 #D8BF95 transparent transparent;
+                            background-color:#c3ad89;
+                        }
+
+                        &.tbc>div {
+                            color:rgba(36, 35, 33, 1);
+                            border-color:#B6C89E #B6C89E transparent transparent;
+                            background-color:#A5B590;
+                        }
+
+                        &.wotlk>div {
+                            color:rgba(36, 35, 33, 1);
+                            border-color:#B6C2D7 #B6C2D7 transparent transparent;
+                            background-color:#A5B0C2;
+                        }
+                    }
+                    &>.row:nth-of-type(2n) {
+                        &.classic>div {
+                            color:rgba(36, 35, 33, 1);
+                            border-color:#D8BF95 #D8BF95 transparent transparent;
+                            background-color:#e2cba1;
+                        }
+
+                        &.tbc>div {
+                            color:rgba(36, 35, 33, 1);
+                            border-color:#B6C89E #B6C89E transparent transparent;
+                            background-color:#C1D4AA;
+                        }
+
+                        &.wotlk>div {
+                            color:rgba(36, 35, 33, 1);
+                            border-color:#B6C2D7 #B6C2D7 transparent transparent;
+                            background-color:#C2CEE3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    &.logs {
+        &>.content {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 75px;
+
+            &>.table {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                font-size: 13px;
+                line-height: 15px;
+                padding: 12px;
+                margin: 0 125px;
+                background: url(/public/img/frame/top-left.webp) top left no-repeat,
+                            url(/public/img/frame/top-right.webp) top right no-repeat,
+                            url(/public/img/frame/bot-left.webp) bottom left no-repeat,
+                            url(/public/img/frame/bot-right.webp) bottom right no-repeat,
+                            url(/public/img/frame/top.webp) top left repeat-x,
+                            url(/public/img/frame/bot.webp) bottom left repeat-x,
+                            url(/public/img/frame/left.webp) top left repeat-y,
+                            url(/public/img/frame/right.webp) top right repeat-y,
+                            rgba(36, 35, 33, 1);
+
+                &>.header, &>.row {
+                    display: flex;
+                    height: 26px;
+                    flex-direction: row;
+
+                    &>div {
+                        flex: 1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: rgba(221, 221, 221, 1);
+                        border: 1px solid rgba(0, 0, 0, 0);
+
+                        &.id {
+                            flex: 0.1;
+                        }
+
+                        &.ip, &.time {
+                            flex: 0.45;
+                        }
+                    }
+                }
+                &>.header {
+                    &>div {
+                        border-color:#5D5D5D #5D5D5D #1E1D1C #1E1D1C;
+                        background: #2E2D2B;
+                    }
+                }
+                &>.row:nth-of-type(2n + 1) {
+                    &>div {
+                        color:rgba(36, 35, 33, 1);
+                        border-color:#D8BF95 #D8BF95 transparent transparent;
+                        background-color:#c3ad89;
+                    }
+                }
+                &>.row:nth-of-type(2n) {
+                    &>div {
+                        color:rgba(36, 35, 33, 1);
+                        border-color:#D8BF95 #D8BF95 transparent transparent;
+                        background-color:#e2cba1;
+                    }
+                }
+            }
+        }
+    }
+}
