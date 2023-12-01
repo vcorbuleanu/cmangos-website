@@ -10,15 +10,21 @@
 
 	define('WEBSITE_TITLE', 'cMaNGOS');
 	define('WEBSITE_DOMAIN', '127.0.0.1');
+	define('WEBSITE_HTTPS', false);
 	define('WEBSITE_BASE_URL', WEBSITE_HTTPS ? 'https://' : 'http://' . WEBSITE_DOMAIN);
 	define('WEBSITE_TIMEZONE', 'Europe/Bucharest');
+
+	// This is where you configure your landing page.
 	define('DEFAULT_CONTROLLER', 'news');
 	define('DEFAULT_METHOD', 'latest');
+
 	// Whether to display the site disclaimer or not. Disable at your own discretion/peril.
 	define('WEBSITE_DISCLAIMER', true);
 	define('NEWS_ARCHIVE_AFTER_DAYS', 30);
 	define('ACCOUNT_ACCESS_LOGS_DAYS', 7);
 	define('REQUIRE_ACCOUNT_ACTIVATION', false);
+
+	// This is where you define the default avatar & signature code as well as the list of available avatars & signatures.
 	define('DEFAULT_AVATAR', 'default');
 	define('DEFAULT_SIGNATURE', 'default');
 	define('AVATAR_LIST', [
