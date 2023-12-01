@@ -1,3 +1,5 @@
+![cmangos-website](https://github.com/vcorbuleanu/cmangos-website/assets/46979394/21b89049-98c4-4d2d-9ff1-13b60fc6eb4b)
+
 cmangos-website (c) by Victor Corbuleanu
 
 cmangos-website is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
