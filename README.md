@@ -1,4 +1,4 @@
-![cmangos-website](https://github.com/vcorbuleanu/cmangos-website/assets/46979394/21b89049-98c4-4d2d-9ff1-13b60fc6eb4b)
+![cmangos-website](https://github.com/vcorbuleanu/cmangos-website/assets/46979394/97cffde1-0f2a-4821-b074-c5af3f6dcc02)
 
 cmangos-website (c) by Victor Corbuleanu
 
