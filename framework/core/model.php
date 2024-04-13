@@ -10,7 +10,7 @@
 	
 	class model {
 		public function get_login($username) {
-			$statement = database::connection()->prepare('SELECT r.id AS id, r.s AS salt, r.v AS verifier, r.token, w.tokens AS tokens, r.locked AS locked, COALESCE((SELECT SUM(r4.active) FROM realmd.account r3, realmd.account_banned r4 WHERE r3.id = r4.account_id AND r3.username = :username), 0) as banned FROM realmd.account r, website.account w WHERE r.id = w.id AND r.username = :username GROUP BY r.id');
+                        $statement = database::connection()->prepare('SELECT r.id AS id, r.s AS salt, r.v AS verifier, r.token, w.tokens AS tokens, r.locked AS locked, COALESCE((SELECT SUM(r4.active) FROM ' . DB_REALMD . '.account r3, ' . DB_REALMD . '.account_banned r4 WHERE r3.id = r4.account_id AND r3.username = :username), 0) as banned FROM ' . DB_REALMD . '.account r, website.account w WHERE r.id = w.id AND r.username = :username GROUP BY r.id');
 			$statement->execute(array('username' => $username));
 			$result = $statement->fetch(PDO::FETCH_ASSOC);
 			if (!$result)
